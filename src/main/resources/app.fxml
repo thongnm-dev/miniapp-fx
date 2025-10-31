@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane
+            xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.controller.AppController">
+    <center>
+        <StackPane BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="16" right="16" bottom="16" left="16"/>
+            </padding>
+            <GridPane vgap="15" hgap="15">
+                <Label text="Nguồn:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="txtSrcPath"/>
+                <Label text="Đích:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="txtDesPath"/>
+                <Label text="Dữ liệu:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextArea GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="txtFiles"/>
+                <ButtonBar GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+                    <buttons>
+                        <Button text="Nguồn　⇒　Đích" onAction="#sourceToDes"/>
+                        <Button text="Đích　⇒　Nguồn" onAction="#desToSource"/>
+                    </buttons>
+                </ButtonBar>
+            </GridPane>
+        </StackPane>
+    </center>
+
+</BorderPane>
