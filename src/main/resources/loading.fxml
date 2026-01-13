@@ -1,0 +1,18 @@
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<StackPane fx:id="overlay"
+           xmlns:fx="http://javafx.com/fxml"
+           visible="false"
+           style="-fx-background-color: rgba(0,0,0,0.15);" fx:controller="dev.thongnm.controller.LoadingController">
+
+    <VBox spacing="10" alignment="CENTER"
+          style="-fx-background-color: white;
+                 -fx-padding: 20;
+                 -fx-opacity: 0.7;
+                 -fx-background-radius: 6;">
+        <ProgressIndicator fx:id="progressBar" prefWidth="100" />
+        <Label fx:id="messageLabel" text="Loading..."/>
+    </VBox>
+</StackPane>

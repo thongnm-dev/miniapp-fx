@@ -1,17 +1,14 @@
-module app {
+module dev.thongnm {
     requires javafx.controls;
     requires javafx.fxml;
-
-    requires org.kordamp.ikonli.javafx;
-    requires org.kordamp.bootstrapfx.core;
-    requires static lombok;
     requires org.apache.commons.lang3;
+    requires org.kordamp.bootstrapfx.core;
+    requires javafx.graphics;
+    requires javafx.base;
 
-    opens com.thongnm to javafx.fxml;
-    opens com.controller to javafx.fxml;
-    opens com.model to javafx.fxml;
+    opens dev.thongnm to javafx.fxml;
 
-    exports com.thongnm;
-    exports com.controller;
-    exports com.model;
+    exports dev.thongnm;
+    exports dev.thongnm.controller;
+    opens dev.thongnm.controller to javafx.fxml;
 }
