@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="dev.thongnm.controller.DayDetailModalController"
+      styleClass="modal-container"
+      spacing="0" style="-fx-background-color: white; -fx-background-radius: 10;" 
+      prefWidth="500" prefHeight="600">
+    
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: #007bff; -fx-background-radius: 10 10 0 0;">
+        <padding>
+            <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+        </padding>
+        
+        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+            <Label fx:id="dayLabel" text="Thứ Hai" style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+            <Label fx:id="dateLabel" text="15 Tháng 1, 2026" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;">
+                <font>
+                    <Font name="System Bold" size="20.0"/>
+                </font>
+            </Label>
+        </VBox>
+        
+        <Button onAction="#onClose" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-cursor: hand;">
+            <graphic>
+                <FontIcon iconLiteral="mdi-close" iconSize="24" iconColor="white"/>
+            </graphic>
+        </Button>
+    </HBox>
+    
+    <!-- Content -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: white;">
+        <VBox fx:id="tasksContainer" spacing="15.0">
+            <padding>
+                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+            </padding>
+            
+            <!-- Add Task Button -->
+            <Button text="+ Thêm Công Việc" onAction="#onAddTask" 
+                    style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20; -fx-cursor: hand;">
+                <font>
+                    <Font size="14.0" name="System Bold"/>
+                </font>
+            </Button>
+            
+            <Separator/>
+            
+            <!-- Tasks List (will be populated dynamically) -->
+            <VBox fx:id="tasksList" spacing="10.0">
+                <!-- Sample Task Items - will be replaced with dynamic content -->
+                <VBox spacing="8.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 8; -fx-padding: 15; -fx-border-color: #dee2e6; -fx-border-radius: 8; -fx-border-width: 1;">
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <FontIcon iconLiteral="mdi-clock" iconSize="16" iconColor="#6c757d"/>
+                        <Label text="09:00 - 10:30" style="-fx-text-fill: #6c757d; -fx-font-size: 13px;"/>
+                        <HBox HBox.hgrow="ALWAYS"/>
+                        <Label text="Quan trọng" style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-padding: 3 8; -fx-background-radius: 3; -fx-font-size: 11px;"/>
+                    </HBox>
+                    
+                    <Label text="Họp team về dự án mới" style="-fx-font-size: 15px; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="System Bold" size="15.0"/>
+                        </font>
+                    </Label>
+                    
+                    <Label text="Thảo luận về kế hoạch triển khai dự án trong quý 1" 
+                           wrapText="true" style="-fx-text-fill: #495057; -fx-font-size: 13px;"/>
+                    
+                    <HBox spacing="5.0">
+                        <Button text="Sửa" style="-fx-background-color: #ffc107; -fx-text-fill: white; -fx-background-radius: 4; -fx-padding: 5 12; -fx-font-size: 12px; -fx-cursor: hand;"/>
+                        <Button text="Xóa" style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-background-radius: 4; -fx-padding: 5 12; -fx-font-size: 12px; -fx-cursor: hand;"/>
+                    </HBox>
+                </VBox>
+                
+                <VBox spacing="8.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 8; -fx-padding: 15; -fx-border-color: #dee2e6; -fx-border-radius: 8; -fx-border-width: 1;">
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <FontIcon iconLiteral="mdi-clock" iconSize="16" iconColor="#6c757d"/>
+                        <Label text="14:00 - 15:00" style="-fx-text-fill: #6c757d; -fx-font-size: 13px;"/>
+                        <HBox HBox.hgrow="ALWAYS"/>
+                        <Label text="Bình thường" style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-padding: 3 8; -fx-background-radius: 3; -fx-font-size: 11px;"/>
+                    </HBox>
+                    
+                    <Label text="Review code" style="-fx-font-size: 15px; -fx-font-weight: bold;">
+                        <font>
+                            <Font name="System Bold" size="15.0"/>
+                        </font>
+                    </Label>
+                    
+                    <Label text="Kiểm tra và review pull request từ các thành viên trong team" 
+                           wrapText="true" style="-fx-text-fill: #495057; -fx-font-size: 13px;"/>
+                    
+                    <HBox spacing="5.0">
+                        <Button text="Sửa" style="-fx-background-color: #ffc107; -fx-text-fill: white; -fx-background-radius: 4; -fx-padding: 5 12; -fx-font-size: 12px; -fx-cursor: hand;"/>
+                        <Button text="Xóa" style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-background-radius: 4; -fx-padding: 5 12; -fx-font-size: 12px; -fx-cursor: hand;"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+    
+    <!-- Footer -->
+    <HBox alignment="CENTER_RIGHT" spacing="10.0" style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 1 0 0 0;">
+        <padding>
+            <Insets top="15.0" right="20.0" bottom="15.0" left="20.0"/>
+        </padding>
+        
+        <Button text="Đóng" onAction="#onClose" 
+                style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20; -fx-cursor: hand;">
+            <font>
+                <Font size="13.0"/>
+            </font>
+        </Button>
+    </HBox>
+</VBox>

@@ -1,24 +1,32 @@
 package dev.thongnm.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 public class MainController {
+
+    private String styleClassSidebar = "mdi-chevron-double-left";
+
+    private boolean collapsed = false;
+
+    @FXML
+    private BorderPane sideBarGroup;
 
     @FXML
     private VBox sideBar;
 
     @FXML
-    private ToggleButton menuToggleBtn;
-
-    @FXML
     private StackPane contentArea;
 
     @FXML
+    private FontIcon chevronIcon;
+
+    @FXML
     public void initialize() {
-        // Initial setup if needed
+
     }
 
     @FXML
@@ -30,25 +38,16 @@ public class MainController {
     }
 
     @FXML
-    private void onDashboard() {
-        System.out.println("Dashboard clicked");
-        // Logic to load Dashboard view
-        // For now, we don't have a dashboard.fxml, so maybe just clear content or do
-        // nothing
-    }
-
-    @FXML
-    private void onSettings() {
-        System.out.println("Settings clicked");
-        // Logic to load Settings view
-    }
-
-    @FXML
     private LoadingController loadingController;
 
     @FXML
     private void onDelivery() {
         loadView("delivery.fxml");
+    }
+
+    @FXML
+    private void onCalendar() {
+        loadView("calendar.fxml");
     }
 
     private void loadView(String fxmlFileName) {

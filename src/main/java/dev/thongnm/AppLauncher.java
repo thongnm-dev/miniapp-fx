@@ -18,8 +18,14 @@ public class AppLauncher extends Application {
     public void start(Stage stage) throws Exception {
         scene = new Scene(loadFXML("main"), 850, 500);
 
-        scene.getStylesheets().add(Objects.requireNonNull(AppLauncher.class.getResource("/app.css")).toExternalForm());
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        scene.getStylesheets().add(Objects.requireNonNull(AppLauncher.class.getResource("/css/bootstrap-button.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(AppLauncher.class.getResource("/css/app.css")).toExternalForm());
+
+        scene.getRoot().setStyle(
+                "-fx-font-family: 'Segoe UI', 'Arial', sans-serif; -fx-font-size: 14px;"
+        );
+        stage.setTitle("Công cụ hỗ trợ");
         stage.setScene(scene);
         stage.show();
     }

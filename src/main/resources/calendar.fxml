@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dev.thongnm.controller.CalendarController">
+    <top>
+        <VBox spacing="15.0" styleClass="card-style">
+            <!-- Header with navigation and view toggle -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                <padding>
+                    <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+                </padding>
+                
+                <!-- Title -->
+                <Label text="Lịch Làm Việc" styleClass="calendar-title">
+                    <font>
+                        <Font name="System Bold" size="24.0"/>
+                    </font>
+                </Label>
+                
+                <!-- Spacer -->
+                <HBox HBox.hgrow="ALWAYS"/>
+                
+                <!-- View Toggle Buttons -->
+                <HBox spacing="5.0" alignment="CENTER">
+                    <fx:define>
+                        <ToggleGroup fx:id="viewToggleGroup"/>
+                    </fx:define>
+                    
+                    <ToggleButton fx:id="weekViewBtn" text="Tuần" toggleGroup="$viewToggleGroup" 
+                                  selected="false" onAction="#onWeekView"
+                                  style="-fx-background-color: #e9ecef; -fx-background-radius: 5 0 0 5; -fx-padding: 8 16;">
+                        <font>
+                            <Font size="13.0"/>
+                        </font>
+                    </ToggleButton>
+                    
+                    <ToggleButton fx:id="monthViewBtn" text="Tháng" toggleGroup="$viewToggleGroup" 
+                                  selected="true" onAction="#onMonthView"
+                                  style="-fx-background-color: #e9ecef; -fx-background-radius: 0 5 5 0; -fx-padding: 8 16;">
+                        <font>
+                            <Font size="13.0"/>
+                        </font>
+                    </ToggleButton>
+                </HBox>
+            </HBox>
+            
+            <!-- Navigation Controls -->
+            <HBox alignment="CENTER" spacing="20.0">
+                <padding>
+                    <Insets bottom="15.0" left="20.0" right="20.0"/>
+                </padding>
+                
+                <Button onAction="#onPreviousPeriod" style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 16;">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi-chevron-left" iconSize="16" iconColor="white"/>
+                    </graphic>
+                </Button>
+                
+                <Label fx:id="periodLabel" text="Tháng 1, 2026" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-min-width: 200; -fx-alignment: center;">
+                    <font>
+                        <Font name="System Bold" size="18.0"/>
+                    </font>
+                </Label>
+                
+                <Button onAction="#onNextPeriod" style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 16;">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi-chevron-right" iconSize="16" iconColor="white"/>
+                    </graphic>
+                </Button>
+                
+                <Button text="Hôm nay" onAction="#onToday" 
+                        style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 16;">
+                    <font>
+                        <Font size="13.0"/>
+                    </font>
+                </Button>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <StackPane>
+            <padding>
+                <Insets top="10" />
+            </padding>
+            <!-- Calendar Grid Container -->
+            <VBox fx:id="calendarContainer" spacing="10.0" styleClass="card-style" StackPane.alignment="CENTER">
+                <padding>
+                    <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+                </padding>
+                
+                <!-- Day Headers -->
+                <GridPane fx:id="dayHeadersGrid" hgap="5.0" vgap="5.0">
+                    <!-- Will be populated dynamically -->
+                </GridPane>
+                
+                <!-- Calendar Grid -->
+                <GridPane fx:id="calendarGrid" hgap="5.0" vgap="5.0" VBox.vgrow="ALWAYS">
+                    <!-- Will be populated dynamically -->
+                </GridPane>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>

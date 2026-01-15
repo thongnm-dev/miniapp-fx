@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10"
+      styleClass="modal-container"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="dev.thongnm.controller.UserModalController">
+
+    <Label text="User Form" style="-fx-font-size: 18; -fx-font-weight: bold"/>
+
+    <TextField fx:id="txtName" promptText="Name"/>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#onCancel"/>
+        <Button text="Save" />
+    </HBox>
+
+</VBox>
