@@ -1,5 +1,6 @@
 package dev.thongnm.controller;
 
+import dev.thongnm.base.BaseController;
 import dev.thongnm.model.DeliveryModel;
 import dev.thongnm.utils.BranchType;
 import javafx.application.Platform;
@@ -20,7 +21,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
 
-public class DeliveryController implements Initializable {
+public class DeliveryController extends BaseController implements Initializable  {
 
     private static final Map<BranchType, Map<String, String>> CONFIG_LOCAL = new
             LinkedHashMap<>() {{
@@ -59,12 +60,6 @@ public class DeliveryController implements Initializable {
 
     @FXML
     private TextArea txtFiles;
-
-    private LoadingController loadingController;
-
-    public void setLoadingController(LoadingController loadingController) {
-        this.loadingController = loadingController;
-    }
 
     private final DeliveryModel model;
 
@@ -114,11 +109,11 @@ public class DeliveryController implements Initializable {
         params.put("des", txtDesPath.getText());
 
         Task<?> task = moveFileTask(params);
-        loadingController.bind(task);
+        getLoadingController().bind(task);
 
-        task.setOnFailed((e) -> loadingController.unbind());
+        task.setOnFailed((e) -> getLoadingController().unbind());
 
-        task.setOnSucceeded((e) -> loadingController.unbind());
+        task.setOnSucceeded((e) -> getLoadingController().unbind());
 
         new Thread(task).start();
 
@@ -131,11 +126,11 @@ public class DeliveryController implements Initializable {
         params.put("des", txtSrcPath.getText());
 
         Task<?> task = moveFileTask(params);
-        loadingController.bind(task);
+        getLoadingController().bind(task);
 
-        task.setOnFailed((e) -> loadingController.unbind());
+        task.setOnFailed((e) -> getLoadingController().unbind());
 
-        task.setOnSucceeded((e) -> loadingController.unbind());
+        task.setOnSucceeded((e) -> getLoadingController().unbind());
 
         new Thread(task).start();
     }

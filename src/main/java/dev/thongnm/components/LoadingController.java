@@ -1,4 +1,4 @@
-package dev.thongnm.controller;
+package dev.thongnm.components;
 
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -7,7 +7,6 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.StackPane;
 
 public class LoadingController {
-
     @FXML
     private StackPane overlay;
 

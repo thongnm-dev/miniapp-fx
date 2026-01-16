@@ -5,7 +5,7 @@
 <StackPane fx:id="overlay"
            xmlns:fx="http://javafx.com/fxml"
            visible="false"
-           style="-fx-background-color: rgba(0,0,0,0.15);" fx:controller="dev.thongnm.controller.LoadingController">
+           style="-fx-background-color: rgba(0,0,0,0.15);" fx:controller="dev.thongnm.components.LoadingController">
 
     <VBox spacing="10" alignment="CENTER"
           style="-fx-background-color: white;

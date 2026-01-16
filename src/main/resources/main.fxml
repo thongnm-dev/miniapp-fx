@@ -4,43 +4,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
-<StackPane fx:id="root" xmlns="http://javafx.com/javafx/21"
+<StackPane xmlns="http://javafx.com/javafx/21"
            xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="dev.thongnm.controller.MainController">
-    <BorderPane style="-fx-padding: 5;">
+    <BorderPane styleClass="main-form">
        <left>
           <BorderPane fx:id="sideBarGroup" styleClass="sidebar" prefWidth="200.0">
               <center>
-                  <VBox fx:id="sideBar" BorderPane.alignment="CENTER">
-                      <Button styleClass="btn-transparent" text="Dashboard">
-                          <graphic>
-                              <FontIcon iconLiteral="mdi-home-variant" iconSize="32" />
-                          </graphic>
-                      </Button>
-                      <Button styleClass="btn-transparent" onAction="#onCalendar" text="Lịch Làm Việc">
-                          <graphic>
-                              <FontIcon iconLiteral="mdi-calendar-today" iconSize="32" />
-                          </graphic>
-                      </Button>
-                      <Button styleClass="btn-transparent" onAction="#onDelivery" text="Delivery">
-                          <graphic>
-                              <FontIcon iconLiteral="mdi-truck-delivery" iconSize="32" />
-                          </graphic>
-                      </Button>
-                      <Button styleClass="btn-transparent" text="Settings">
-                          <graphic>
-                              <FontIcon iconLiteral="mdi-settings" iconSize="32" />
-                          </graphic>
-                      </Button>
+                  <VBox fx:id="sideBar" BorderPane.alignment="CENTER" spacing="3">
                       <padding>
                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                       </padding>
                   </VBox>
               </center>
               <bottom>
-                  <VBox styleClass="bg-white" alignment="CENTER" >
+                  <VBox alignment="CENTER">
                       <Separator/>
-                      <Button styleClass="btn-transparent" onAction="#onMenuToggle">
+                      <Button fx:id="toggle" styleClass="btn-transparent" onAction="#collapse">
                           <graphic>
                               <FontIcon fx:id="chevronIcon" iconLiteral="mdi-chevron-double-left" iconSize="32"/>
                           </graphic>
@@ -52,20 +32,60 @@
        <center>
            <BorderPane>
                <center>
-                   <StackPane fx:id="contentArea" BorderPane.alignment="CENTER">
-                       <Label text="Content Area" textFill="#888888" />
+                   <StackPane BorderPane.alignment="CENTER" >
+                       <TabPane fx:id="mainArea"/>
+                       <padding>
+                           <Insets left="1" bottom="1"/>
+                       </padding>
                    </StackPane>
                </center>
                <bottom>
-                   <GridPane>
+                   <HBox styleClass="footer" spacing="10" alignment="CENTER_LEFT" >
+                       <HBox spacing="10">
+                           <Label text="Thongnm - Email: thongnm@allexceed.co.jp">
+                               <graphic>
+                                   <FontIcon iconLiteral="mdi-account-star-variant" iconSize="24"/>
+                               </graphic>
+                           </Label>
 
-                   </GridPane>
+                           <Separator orientation="VERTICAL"/>
+
+                           <Label fx:id="ipAddress">
+                               <graphic>
+                                   <FontIcon iconLiteral="mdi-signal" iconSize="24"/>
+                               </graphic>
+                           </Label>
+
+                           <Separator orientation="VERTICAL"/>
+
+                           <Label fx:id="dateLabel">
+                               <graphic>
+                                   <FontIcon iconLiteral="mdi-calendar-today" iconSize="24"/>
+                               </graphic>
+                           </Label>
+
+                           <Separator orientation="VERTICAL"/>
+
+                           <Label fx:id="clockLabel">
+                               <graphic>
+                                   <FontIcon iconLiteral="mdi-timer" iconSize="24"/>
+                               </graphic>
+                           </Label>
+                       </HBox>
+
+                       <Region HBox.hgrow="ALWAYS"/>
+                       <Label text="Ver 1.0.0" HBox.hgrow="NEVER">
+                           <graphic>
+                               <FontIcon iconLiteral="mdi-information-outline" iconSize="24"/>
+                           </graphic>
+                       </Label>
+                   </HBox>
                </bottom>
                <padding>
-                   <Insets left="10" right="10"/>
+                   <Insets right="5" left="1"/>
                </padding>
            </BorderPane>
        </center>
     </BorderPane>
-    <fx:include source="loading.fxml" fx:id="loading"/>
+    <fx:include source="utils/loading.fxml" fx:id="loading"/>
 </StackPane>

@@ -6,11 +6,9 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="dev.thongnm.controller.DeliveryController">
     <center>
-        <GridPane hgap="15" vgap="15"
-                  styleClass="card-style">
+        <GridPane hgap="15" vgap="15" styleClass="card-style">
                 <Label text="Branch local:" GridPane.rowIndex="0"/>
                 <HBox spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="1">
-
                     <RadioButton text="Bug" fx:id="rbBug"/>
                     <RadioButton text="Request" fx:id="rbChange"/>
                 </HBox>

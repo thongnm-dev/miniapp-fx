@@ -1,132 +1,76 @@
 package dev.thongnm.controller;
 
+import dev.thongnm.base.BaseController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.time.DayOfWeek;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.WeekFields;
+import java.util.Arrays;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
-public class CalendarController {
-
-    @FXML
-    private Label periodLabel;
+public class CalendarController extends BaseController implements Initializable {
 
     @FXML
-    private GridPane dayHeadersGrid;
+    private Button btnToggle;
+
+    @FXML
+    private Button btnRefresh;
+
+    @FXML
+    private Button btnPrev;
+
+    @FXML
+    private Button btnToday;
+
+    @FXML
+    private Button btnNext;
 
     @FXML
     private GridPane calendarGrid;
 
-    @FXML
-    private ToggleButton weekViewBtn;
-
-    @FXML
-    private ToggleButton monthViewBtn;
-
-    @FXML
-    private VBox calendarContainer;
-
     private LocalDate currentDate;
-    private boolean isMonthView = true;
+
     private static final Locale LOCALE = Locale.of("vi", "VN");
     private static final DateTimeFormatter MONTH_YEAR_FORMATTER = DateTimeFormatter.ofPattern("'Tháng' M, yyyy",
             LOCALE);
 
     @FXML
-    public void initialize() {
-        currentDate = LocalDate.now();
-        updateCalendar();
-    }
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    @FXML
-    private void onWeekView() {
-        isMonthView = false;
-        updateCalendar();
-    }
+        btnToggle.getStyleClass().addAll(Arrays.asList("btn-transparent", "btn-circle", "btn-outline"));
 
-    @FXML
-    private void onMonthView() {
-        isMonthView = true;
-        updateCalendar();
-    }
+        btnRefresh.getStyleClass().addAll(Arrays.asList("btn-transparent", "btn-circle", "btn-outline"));
 
-    @FXML
-    private void onPreviousPeriod() {
-        if (isMonthView) {
-            currentDate = currentDate.minusMonths(1);
-        } else {
-            currentDate = currentDate.minusWeeks(1);
-        }
-        updateCalendar();
-    }
+        btnPrev.getStyleClass().addAll(Arrays.asList("btn-transparent", "btn-outline"));
 
-    @FXML
-    private void onNextPeriod() {
-        if (isMonthView) {
-            currentDate = currentDate.plusMonths(1);
-        } else {
-            currentDate = currentDate.plusWeeks(1);
-        }
-        updateCalendar();
-    }
+        btnToday.getStyleClass().addAll(Arrays.asList("btn-transparent", "btn-outline"));
 
-    @FXML
-    private void onToday() {
+        btnNext.getStyleClass().addAll(Arrays.asList("btn-transparent", "btn-circle", "btn-outline"));
+
         currentDate = LocalDate.now();
         updateCalendar();
     }
 
     private void updateCalendar() {
-        // Update period label
-        if (isMonthView) {
-            periodLabel.setText(currentDate.format(MONTH_YEAR_FORMATTER));
-        } else {
-            WeekFields weekFields = WeekFields.of(LOCALE);
-            int weekNumber = currentDate.get(weekFields.weekOfWeekBasedYear());
-            periodLabel.setText("Tuần " + weekNumber + ", " + currentDate.getYear());
-        }
-
         // Clear existing calendar
-        dayHeadersGrid.getChildren().clear();
         calendarGrid.getChildren().clear();
 
-        // Add day headers
-        String[] dayNames = { "CN", "T2", "T3", "T4", "T5", "T6", "T7" };
-        for (int i = 0; i < 7; i++) {
-            Label dayHeader = new Label(dayNames[i]);
-            dayHeader.setStyle(
-                    "-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #495057; -fx-alignment: center;");
-            dayHeader.setMaxWidth(Double.MAX_VALUE);
-            dayHeader.setAlignment(Pos.CENTER);
-            dayHeader.setPrefHeight(40);
-            GridPane.setFillWidth(dayHeader, true);
-            dayHeadersGrid.add(dayHeader, i, 0);
-        }
-
-        if (isMonthView) {
-            renderMonthView();
-        } else {
-            renderWeekView();
-        }
+        renderMonthView();
     }
 
     private void renderMonthView() {
@@ -158,20 +102,6 @@ public class CalendarController {
 
         // Setup responsive grid constraints for month view
         setupGridConstraints(7, maxRows);
-    }
-
-    private void renderWeekView() {
-        // Get the start of the week (Sunday)
-        LocalDate startOfWeek = currentDate.with(DayOfWeek.SUNDAY);
-
-        for (int i = 0; i < 7; i++) {
-            LocalDate date = startOfWeek.plusDays(i);
-            Button dayButton = createDayButton(date);
-            calendarGrid.add(dayButton, i, 0);
-        }
-
-        // Setup responsive grid constraints for week view
-        setupGridConstraints(7, 1);
     }
 
     private void setupGridConstraints(int cols, int rows) {
@@ -235,7 +165,7 @@ public class CalendarController {
         }
 
         // Dim dates from other months (for month view)
-        if (isMonthView && date.getMonth() != currentDate.getMonth()) {
+        if (date.getMonth() != currentDate.getMonth()) {
             styleBuilder.append(" -fx-opacity: 0.4;");
         }
 
