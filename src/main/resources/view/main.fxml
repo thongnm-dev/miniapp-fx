@@ -87,5 +87,5 @@
            </BorderPane>
        </center>
     </BorderPane>
-    <fx:include source="utils/loading.fxml" fx:id="loading"/>
+    <fx:include source="../utils/loading.fxml" fx:id="loading"/>
 </StackPane>

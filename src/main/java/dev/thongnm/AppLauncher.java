@@ -1,7 +1,10 @@
 package dev.thongnm;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 import org.kordamp.bootstrapfx.BootstrapFX;
 
@@ -10,13 +13,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 
 public class AppLauncher extends Application {
-    private static Scene scene;
+
+    private ConfigurableApplicationContext applicationContext;
+
+    @Override
+    public void init() throws Exception {
+        applicationContext = new SpringApplicationBuilder(MainApp.class).run();
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
-        scene = new Scene(loadFXML("main"), 850, 500);
+        Scene scene = new Scene(loadFXML("main"), 850, 500);
 
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         scene.getStylesheets().add(Objects.requireNonNull(AppLauncher.class.getResource("/css/app.css")).toExternalForm());
@@ -34,11 +45,7 @@ public class AppLauncher extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(AppLauncher.class.getResource("/" + fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AppLauncher.class.getResource("/view/" + fxml + ".fxml"));
         return fxmlLoader.load();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

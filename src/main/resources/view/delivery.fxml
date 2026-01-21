@@ -11,6 +11,7 @@
                 <HBox spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="1">
                     <RadioButton text="Bug" fx:id="rbBug"/>
                     <RadioButton text="Request" fx:id="rbChange"/>
+                    <RadioButton text="St Dev" fx:id="rbStDev"/>
                 </HBox>
 
                 <Label text="Auto pull" GridPane.rowIndex="1"/>
@@ -26,6 +27,7 @@
                     <VBox spacing="10">
                         <HBox spacing="10">
                             <Label text="Branch:" GridPane.rowIndex="0"/>
+                            <RadioButton text="St Dev" fx:id="rbStDevAws"/>
                             <RadioButton text="CT DEV" fx:id="rbCtDev"/>
                             <RadioButton text="CHANGE" fx:id="rbChangeRequest"/>
                             <RadioButton text="Other" fx:id="rbOther"/>

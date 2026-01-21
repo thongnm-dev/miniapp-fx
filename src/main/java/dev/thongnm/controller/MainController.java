@@ -104,7 +104,7 @@ public class MainController implements Initializable {
             sideBar.getChildren().add(button);
         }
 
-        Optional<Tab> _tabItem = mainArea.getTabs().stream().filter(item -> Objects.equals("dashboard.fxml", item.getId())).findFirst();
+        Optional<Tab> _tabItem = mainArea.getTabs().stream().filter(item -> Objects.equals("view/dashboard.fxml", item.getId())).findFirst();
 
         if (_tabItem.isEmpty()) {
             try {
