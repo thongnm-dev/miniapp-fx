@@ -13,9 +13,6 @@ module dev.thongnm {
     requires org.kordamp.ikonli.materialdesign;
     requires static lombok;
     requires java.net.http;
-    requires spring.boot.autoconfigure;
-    requires spring.context;
-    requires spring.boot;
 
     opens dev.thongnm to javafx.fxml;
 

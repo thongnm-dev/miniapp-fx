@@ -25,9 +25,10 @@ public class DeliveryController extends BaseController implements Initializable 
 
     private static final Map<BranchType, Map<String, String>> CONFIG_LOCAL = new
             LinkedHashMap<>() {{
-                put(BranchType.BUG, Collections.singletonMap("path", "D:\\Thongnm\\ESS_DELIVERY\\ess_shin_moela"));
-                put(BranchType.CHANGE_REQUEST, Collections.singletonMap("path", "D:\\Thongnm\\ESS_CHANGE_REQUEST\\ess_shin_moela"));
-                put(BranchType.ST_DEV, Collections.singletonMap("path", "D:\\Thongnm\\ESS_SHIN_MOELA_ST_DEV"));
+                put(BranchType.BUG, Collections.singletonMap("path",
+                        "D:\\Thongnm\\ESS_DELIVERY\\ess_shin_moela"));
+                put(BranchType.CHANGE_REQUEST, Collections.singletonMap("path",
+                        "D:\\Thongnm\\ESS_CHANGE_REQUEST\\ess_shin_moela"));
             }};
 
     private static final String PATH_STORE_CODE_COMMIT = "D:\\Thongnm\\ESS_SHIN_MOELA\\ess_shin_moela";
@@ -37,13 +38,6 @@ public class DeliveryController extends BaseController implements Initializable 
 
     @FXML
     private RadioButton rbChange;
-
-    @FXML
-    private RadioButton rbStDev;
-
-    // #
-    @FXML
-    private RadioButton rbStDevAws;
 
     @FXML
     private RadioButton rbCtDev;
@@ -146,25 +140,21 @@ public class DeliveryController extends BaseController implements Initializable 
 
         rbBug.setUserData(BranchType.BUG);
         rbChange.setUserData(BranchType.CHANGE_REQUEST);
-        rbStDev.setUserData(BranchType.ST_DEV);
 
         rbBug.setToggleGroup(branch);
         rbChange.setToggleGroup(branch);
-        rbStDev.setToggleGroup(branch);
-
-        rbStDev.setSelected(true);
+        rbBug.setSelected(true);
 
         rbCtDev.setUserData(BranchType.BUG);
         rbChangeRequest.setUserData(BranchType.CHANGE_REQUEST);
-        rbStDevAws.setUserData(BranchType.ST_DEV);
 
         rbCtDev.setToggleGroup(branchCodeCommit);
         rbChangeRequest.setToggleGroup(branchCodeCommit);
         rbOther.setToggleGroup(branchCodeCommit);
-        rbStDevAws.setToggleGroup(branchCodeCommit);
-        rbStDevAws.setSelected(true);
+        rbCtDev.setSelected(true);
 
-        txtSrcPath.textProperty().bindBidirectional(new SimpleStringProperty(CONFIG_LOCAL.get(BranchType.ST_DEV).get("path")));
+        txtSrcPath.textProperty().bindBidirectional(new
+                SimpleStringProperty(CONFIG_LOCAL.get(BranchType.BUG).get("path")));
 
         branch.selectedToggleProperty().addListener((obs, old, selected) -> {
             if (selected != null) {
@@ -172,16 +162,17 @@ public class DeliveryController extends BaseController implements Initializable 
                 String currentSrcBinding = switch (type) {
                     case BUG -> CONFIG_LOCAL.get(BranchType.BUG).get("path");
                     case CHANGE_REQUEST -> CONFIG_LOCAL.get(BranchType.CHANGE_REQUEST).get("path");
-                    case ST_DEV -> CONFIG_LOCAL.get(BranchType.ST_DEV).get("path");
                 };
 
-                txtSrcPath.textProperty().bindBidirectional(new SimpleStringProperty(currentSrcBinding));
+                txtSrcPath.textProperty().bindBidirectional(new
+                        SimpleStringProperty(currentSrcBinding));
             }
         });
 
         txtDesPath.disableProperty().bind(rbOther.selectedProperty().not());
 
-        txtDesPath.textProperty().bindBidirectional(new SimpleStringProperty(PATH_STORE_CODE_COMMIT));
+        txtDesPath.textProperty().bindBidirectional(new
+                SimpleStringProperty(PATH_STORE_CODE_COMMIT));
         rbOther.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
             final String path = isSelected ? "" : PATH_STORE_CODE_COMMIT;
 
