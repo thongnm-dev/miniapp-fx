@@ -6,11 +6,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.StackPane;
+import org.springframework.stereotype.Component;
 
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
+@Component
 public class AwsController extends BaseController implements Initializable {
 
     @FXML

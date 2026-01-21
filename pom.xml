@@ -105,38 +105,13 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <!-- Automate jpackage after jlink -->
-                        <id>create-jpackage-installer</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>jpackage</executable>
-                            <arguments>
-                                <argument>--type</argument>
-                                <argument>exe</argument>
-                                <argument>--dest</argument>
-                                <argument>target/installer</argument>
-                                <argument>--name</argument>
-                                <argument>SimpleApp</argument>
-                                <argument>--runtime-image</argument>
-                                <argument>target/image</argument>
-                                <argument>--module</argument>
-                                <argument>dev.thongnm/dev.thongnm.MainApp</argument>
-                                <argument>--win-shortcut</argument>
-                                <argument>--win-menu</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.3</version>
+                <configuration>
+                    <argLine>--add-opens=javafx.graphics/com.sun.javafx.application=ALL-UNNAMED</argLine>
+                </configuration>
             </plugin>
-
         </plugins>
     </build>
 </project>

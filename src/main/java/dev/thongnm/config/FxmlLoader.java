@@ -15,7 +15,7 @@ public class FxmlLoader {
         this.context = context;
     }
 
-    public Parent load(String fxmlPath) throws IOException {
+    public Parent loadFxml(String fxmlPath) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setControllerFactory(context::getBean);
         loader.setLocation(getClass().getResource(fxmlPath));

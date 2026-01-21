@@ -1,6 +1,6 @@
 module dev.thongnm {
     requires javafx.base;
-    requires javafx.graphics;
+    requires transitive javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
     requires org.apache.commons.lang3;
@@ -16,18 +16,21 @@ module dev.thongnm {
     requires spring.boot.autoconfigure;
     requires spring.context;
     requires spring.boot;
+    requires spring.beans;
 
-    opens dev.thongnm to javafx.fxml;
+    opens dev.thongnm to javafx.fxml, spring.core;
 
     exports dev.thongnm;
     exports dev.thongnm.components;
     exports dev.thongnm.controller;
     exports dev.thongnm.controller.auth;
     exports dev.thongnm.controller.aws;
+    exports dev.thongnm.config;
 
-    opens dev.thongnm.components to javafx.fxml;
+    opens dev.thongnm.components to javafx.fxml, spring.core;
+    opens dev.thongnm.config to spring.core;
 
-    opens dev.thongnm.controller to javafx.fxml;
-    opens dev.thongnm.controller.auth to javafx.fxml;
-    opens dev.thongnm.controller.aws to javafx.fxml;
+    opens dev.thongnm.controller to javafx.fxml, spring.core;
+    opens dev.thongnm.controller.auth to javafx.fxml, spring.core;
+    opens dev.thongnm.controller.aws to javafx.fxml, spring.core;
 }

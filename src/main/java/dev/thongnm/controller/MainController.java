@@ -1,8 +1,23 @@
 package dev.thongnm.controller;
 
-import dev.thongnm.base.BaseController;
-import dev.thongnm.components.LoadingController;
-import dev.thongnm.model.MainModel;
+import java.net.URI;
+import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.ResourceBundle;
+
+import org.kordamp.ikonli.javafx.FontIcon;
+import org.springframework.stereotype.Component;
+
 import dev.thongnm.service.AppService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -17,19 +32,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import org.kordamp.ikonli.javafx.FontIcon;
 
-import java.net.URI;
-import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-
+@Component
 public class MainController implements Initializable {
 
     private static final String IP_API = "https://api.ipify.org?format=json";
@@ -58,15 +67,9 @@ public class MainController implements Initializable {
     @FXML
     private Button toggle;
 
-    @FXML
-    private LoadingController loadingController;
-
-    private final MainModel model;
-
     private List<Button> lstmenu = new ArrayList<>();
 
     public MainController() {
-        model = new MainModel();
     }
 
     @FXML
@@ -134,6 +137,7 @@ public class MainController implements Initializable {
     private void collapse(ActionEvent event) {
 
         Button button = (Button) event.getSource();
+        @SuppressWarnings("unchecked")
         Map<String, Object> _btnToggle = (Map<String, Object>) button.getUserData();
 
         final boolean isCollapse = (boolean) _btnToggle.get("expanded");
@@ -191,9 +195,9 @@ public class MainController implements Initializable {
     private void loadView(ActionEvent event) {
         Button button = (Button) event.getSource();
 
+        @SuppressWarnings("unchecked")
         final Map<String, Object> UserData = (Map<String, Object>) button.getUserData();
         final String fxmlFileName = (String) UserData.get("id");
-        final String screenName = (String) UserData.get("name");
         Optional<Tab> _tabItem = mainArea.getTabs().stream().filter(item -> Objects.equals(fxmlFileName, item.getId())).findFirst();
 
         if (_tabItem.isEmpty()) {
@@ -210,11 +214,6 @@ public class MainController implements Initializable {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/" + fxmlFileName));
             javafx.scene.Node view = loader.load();
-
-            Object controller = loader.getController();
-            if (controller instanceof BaseController) {
-                ((BaseController) controller).setLoadingController(this.loadingController);
-            }
 
             final Tab childTab = new Tab();
             childTab.setText(screenName);

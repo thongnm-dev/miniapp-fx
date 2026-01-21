@@ -5,8 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.StackPane;
+import org.springframework.stereotype.Component;
 
-public class LoadingController {
+@Component
+public class LoadingF {
     @FXML
     private StackPane overlay;
 

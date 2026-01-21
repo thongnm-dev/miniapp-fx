@@ -5,20 +5,15 @@ import dev.thongnm.model.DeliveryModel;
 import dev.thongnm.utils.BranchType;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
 
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 public class DeliveryController extends BaseController implements Initializable  {
@@ -73,40 +68,39 @@ public class DeliveryController extends BaseController implements Initializable 
         this.model = new DeliveryModel();
     }
 
-    private <T> Task<T> moveFileTask(Map<String, Object> params) {
-
-        final List<String> files = model.getFiles();
-        final String source = (String) params.get("source");
-        final String des = (String) params.get("des");
-        return new Task<T>() {
-            @Override
-            protected T call() throws Exception {
-                updateProgress(-1, -1);
-                Thread.sleep(1500);
-                for (String file : files) {
-                    String targetFile = StringUtils.substring(file, StringUtils.indexOf(file, "DEV_SHARE"),
-                            StringUtils.length(file));
-                    final Path sourcePath = Paths.get(source, targetFile);
-                    final Path destinationPath = Paths.get(des, targetFile);
-
-                    if (Files.notExists(sourcePath)) {
-                        if (Files.exists(destinationPath)) {
-                            Files.delete(destinationPath);
-                        }
-                    } else if (Files.exists(sourcePath)) {
-                        if (Files.exists(destinationPath)) {
-                            Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
-                        } else {
-                            Files.createDirectories(destinationPath.getParent());
-                            Files.copy(sourcePath, destinationPath, StandardCopyOption.COPY_ATTRIBUTES);
-                        }
-                    }
-                }
-
-                return null;
-            }
-        };
-    }
+    // TODO: Implement moveFileTask if needed
+    // private <T> Task<T> moveFileTask(Map<String, Object> params) {
+    //     final List<String> files = model.getFiles();
+    //     final String source = (String) params.get("source");
+    //     final String des = (String) params.get("des");
+    //     return new Task<T>() {
+    //         @Override
+    //         protected T call() throws Exception {
+    //             updateProgress(-1, -1);
+    //             Thread.sleep(1500);
+    //             for (String file : files) {
+    //                 int indexOfDevShare = file.contains("DEV_SHARE") ? file.indexOf("DEV_SHARE") : 0;
+    //                 String targetFile = file.substring(indexOfDevShare);
+    //                 final Path sourcePath = Paths.get(source, targetFile);
+    //                 final Path destinationPath = Paths.get(des, targetFile);
+    //
+    //                 if (Files.notExists(sourcePath)) {
+    //                     if (Files.exists(destinationPath)) {
+    //                         Files.delete(destinationPath);
+    //                     }
+    //                 } else if (Files.exists(sourcePath)) {
+    //                     if (Files.exists(destinationPath)) {
+    //                         Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+    //                     } else {
+    //                         Files.createDirectories(destinationPath.getParent());
+    //                         Files.copy(sourcePath, destinationPath, StandardCopyOption.COPY_ATTRIBUTES);
+    //                     }
+    //                 }
+    //             }
+    //             return null;
+    //         }
+    //     };
+    // }
 
     @FXML
     private void sourceToDes() {
@@ -114,14 +108,14 @@ public class DeliveryController extends BaseController implements Initializable 
         params.put("source", txtSrcPath.getText());
         params.put("des", txtDesPath.getText());
 
-        Task<?> task = moveFileTask(params);
-        getLoadingController().bind(task);
+        // Task<?> task = moveFileTask(params);
+        // getLoadingController().bind(task);
 
-        task.setOnFailed((e) -> getLoadingController().unbind());
+        // task.setOnFailed((e) -> getLoadingController().unbind());
 
-        task.setOnSucceeded((e) -> getLoadingController().unbind());
+        // task.setOnSucceeded((e) -> getLoadingController().unbind());
 
-        new Thread(task).start();
+        // new Thread(task).start();
 
     }
 
@@ -131,14 +125,14 @@ public class DeliveryController extends BaseController implements Initializable 
         params.put("source", txtDesPath.getText());
         params.put("des", txtSrcPath.getText());
 
-        Task<?> task = moveFileTask(params);
-        getLoadingController().bind(task);
+        // Task<?> task = moveFileTask(params);
+        // getLoadingController().bind(task);
 
-        task.setOnFailed((e) -> getLoadingController().unbind());
+        // task.setOnFailed((e) -> getLoadingController().unbind());
 
-        task.setOnSucceeded((e) -> getLoadingController().unbind());
+        // task.setOnSucceeded((e) -> getLoadingController().unbind());
 
-        new Thread(task).start();
+        // new Thread(task).start();
     }
 
     @Override

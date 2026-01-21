@@ -1,13 +1,14 @@
 package dev.thongnm.base;
 
-import dev.thongnm.components.LoadingController;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import dev.thongnm.components.LoadingF;
 import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
 
 public class BaseController {
 
     @Getter(AccessLevel.PROTECTED)
-    @Setter
-    private LoadingController loadingController;
+    @Qualifier("loadingF")
+    private LoadingF loading;
 }

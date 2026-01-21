@@ -1,5 +1,7 @@
 #
 target/
+.vscode/
+.idea/
 
 ### Application Properties ###
 src/main/resources/application-prod.yml
