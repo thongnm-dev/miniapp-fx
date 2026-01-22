@@ -15,7 +15,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javafx.scene.paint.Paint;
 import org.kordamp.ikonli.javafx.FontIcon;
+import org.kordamp.ikonli.javafx.Icon;
 import org.springframework.stereotype.Component;
 
 import dev.thongnm.service.AppService;
@@ -69,9 +71,6 @@ public class MainController implements Initializable {
 
     private List<Button> lstmenu = new ArrayList<>();
 
-    public MainController() {
-    }
-
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -93,6 +92,7 @@ public class MainController implements Initializable {
             FontIcon icon = new FontIcon();
             icon.setIconLiteral((String) res.get("icon"));
             icon.setIconSize((int) res.get("size"));
+            icon.setIconColor(Paint.valueOf("blue"));
             Label iconLabel = new Label();
             iconLabel.setGraphic(icon);
 

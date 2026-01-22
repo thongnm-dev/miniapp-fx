@@ -33,6 +33,7 @@ public class StageInitializer {
         Parent view = manager.loadView(configPath.getStartup());
 
         Scene scene = new Scene(view, configPath.getWidth(), configPath.getHeight());
+        stage.setScene(scene);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         scene.getStylesheets().add(Objects.requireNonNull(AppLauncher.class.getResource("/css/app.css")).toExternalForm());
         scene.getStylesheets().add(Objects.requireNonNull(AppLauncher.class.getResource("/css/bootstrap-button.css")).toExternalForm());
