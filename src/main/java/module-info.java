@@ -26,6 +26,8 @@ module dev.thongnm {
     exports dev.thongnm.controller.auth;
     exports dev.thongnm.controller.aws;
     exports dev.thongnm.config;
+    exports dev.thongnm.utils;
+    exports dev.thongnm.event;
 
     opens dev.thongnm.components to javafx.fxml, spring.core;
     opens dev.thongnm.config to spring.core;

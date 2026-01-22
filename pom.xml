@@ -45,7 +45,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.42</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.kordamp.ikonli</groupId>
@@ -90,26 +90,24 @@
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
-                <executions>
-                    <execution>
-                        <!-- Automate jlink during package phase -->
-                        <id>create-jlink-image</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jlink</goal>
-                        </goals>
-                    </execution>
-                </executions>
                 <configuration>
-                    <mainClass>dev.thongnm.AppLauncher</mainClass>
+                    <mainClass>dev.thongnm.MainApp</mainClass>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.5.3</version>
+                <groupId>org.panteleyev</groupId>
+                <artifactId>jpackage-maven-plugin</artifactId>
+                <version>1.7.3</version>
                 <configuration>
-                    <argLine>--add-opens=javafx.graphics/com.sun.javafx.application=ALL-UNNAMED</argLine>
+                    <name>MyApp</name>
+                    <appVersion>1.0.0</appVersion>
+                    <vendor>THONGNM-DEV</vendor>
+                    <destination>target/dist</destination>
+                    <module>dev.thongnm/dev.thongnm.MainApp</module>
+                    <runtimeImage>target/runtime-image</runtimeImage>
+                    <javaOptions>
+                        <option>-Dfile.encoding=UTF-8</option>
+                    </javaOptions>
                 </configuration>
             </plugin>
         </plugins>

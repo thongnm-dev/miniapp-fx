@@ -28,7 +28,7 @@
 
                     <VBox>
                         <padding>
-                            <Insets top="8"/>
+                            <Insets top="10"/>
                         </padding>
                         <HBox BorderPane.alignment="CENTER_RIGHT">
                             <Region HBox.hgrow="ALWAYS"/>

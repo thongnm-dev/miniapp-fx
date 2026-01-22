@@ -1,32 +1,30 @@
 package dev.thongnm;
 
+import dev.thongnm.event.StageReadyEvent;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import dev.thongnm.config.StageManager;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 
 public class AppLauncher extends Application {
 
-    private ConfigurableApplicationContext applicationContext;
-
-    private StageManager stageManager;
+    private ConfigurableApplicationContext context;
 
     @Override
     public void init() throws Exception {
-        applicationContext = new SpringApplicationBuilder(MainApp.class).run();
+        context = new SpringApplicationBuilder(MainApp.class).run();
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Register the stage as a bean in the Spring context
-        applicationContext.getBeanFactory().registerSingleton("primaryStage", primaryStage);
+        context.publishEvent(new StageReadyEvent(primaryStage));
+    }
 
-        stageManager = applicationContext.getBean(StageManager.class);
-
-        stageManager.setPrimaryStage(primaryStage);
-        stageManager.switchScene("main");
-        primaryStage.setTitle(stageManager.getApplicationTitle());
+    @Override
+    public void stop() throws Exception {
+        context.close();
+        Platform.exit();
     }
 }
