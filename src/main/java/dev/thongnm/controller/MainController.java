@@ -15,9 +15,10 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import dev.thongnm.utils.StageManager;
+import javafx.scene.Node;
 import javafx.scene.paint.Paint;
 import org.kordamp.ikonli.javafx.FontIcon;
-import org.kordamp.ikonli.javafx.Icon;
 import org.springframework.stereotype.Component;
 
 import dev.thongnm.service.AppService;
@@ -27,7 +28,6 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -41,7 +41,11 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 @Component
-public class MainController implements Initializable {
+public class MainController {
+    // **************************************************************
+    // Variable
+    // **************************************************************
+    private final StageManager manager;
 
     private static final String IP_API = "https://api.ipify.org?format=json";
 
@@ -71,9 +75,11 @@ public class MainController implements Initializable {
 
     private List<Button> lstmenu = new ArrayList<>();
 
+    public MainController(StageManager manager) {
+        this.manager = manager;
+    }
     @FXML
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize() {
 
         Map<String, Object> _btnToggle = new HashMap<>();
         _btnToggle.put("expanded", true);
@@ -212,8 +218,7 @@ public class MainController implements Initializable {
             final String fxmlFileName = (String) wMenuData.get("id");
             final String screenName = (String) wMenuData.get("name");
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/" + fxmlFileName));
-            javafx.scene.Node view = loader.load();
+            Node view = manager.loadView(fxmlFileName);
 
             final Tab childTab = new Tab();
             childTab.setText(screenName);

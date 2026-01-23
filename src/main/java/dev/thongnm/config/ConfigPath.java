@@ -1,20 +1,20 @@
 package dev.thongnm.config;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@Getter
-@Setter
+@Data
+@ConfigurationProperties(prefix = "app")
 public class ConfigPath {
-    private String appName = "Help tools";
+    private String name;
 
-    private int width = 1000;
+    private int width;
 
-    private int height = 700;
+    private int height;
 
     private boolean allowMaximumSize = true;
 
     private boolean allowMinimumSize = true;
 
-    private String startup = "main";
+    private String startupView;
 }

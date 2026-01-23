@@ -1,4 +1,4 @@
-package dev.thongnm.config;
+package dev.thongnm.utils;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

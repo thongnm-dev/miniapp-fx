@@ -1,15 +1,7 @@
-package dev.thongnm.config;
+package dev.thongnm.utils;
 
-import java.util.Objects;
-
-import org.kordamp.bootstrapfx.BootstrapFX;
-import org.springframework.stereotype.Component;
-
-import dev.thongnm.AppLauncher;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
 
 @Component
 public class StageManager {
@@ -22,7 +14,7 @@ public class StageManager {
 
     public Parent loadView(final String viewName) {
         try {
-            return fxmlLoader.loadFxml("/view/" + viewName + ".fxml");
+            return fxmlLoader.loadFxml(viewName);
         } catch (Exception e) {
             return null;
         }

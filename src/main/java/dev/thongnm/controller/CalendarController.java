@@ -25,7 +25,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 @Component
-public class CalendarController extends BaseController implements Initializable {
+public class CalendarController extends BaseController {
 
     @FXML
     private Button btnToggle;
@@ -52,7 +52,7 @@ public class CalendarController extends BaseController implements Initializable 
             LOCALE);
 
     @FXML
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize() {
 
         btnToggle.getStyleClass().addAll(Arrays.asList("btn-transparent", "btn-circle", "btn-outline"));
 

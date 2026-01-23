@@ -9,7 +9,6 @@ module dev.thongnm {
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.javafx;
     // add icon pack modules
-    requires org.kordamp.ikonli.fontawesome6;
     requires org.kordamp.ikonli.materialdesign;
     requires static lombok;
     requires java.net.http;
@@ -22,17 +21,19 @@ module dev.thongnm {
 
     exports dev.thongnm;
     exports dev.thongnm.components;
+    exports dev.thongnm.config;
     exports dev.thongnm.controller;
     exports dev.thongnm.controller.auth;
     exports dev.thongnm.controller.aws;
-    exports dev.thongnm.config;
-    exports dev.thongnm.utils;
     exports dev.thongnm.event;
+    exports dev.thongnm.service;
+    exports dev.thongnm.utils;
 
     opens dev.thongnm.components to javafx.fxml, spring.core;
-    opens dev.thongnm.config to spring.core;
+    opens dev.thongnm.config to javafx.fxml, spring.core;
 
     opens dev.thongnm.controller to javafx.fxml, spring.core;
     opens dev.thongnm.controller.auth to javafx.fxml, spring.core;
     opens dev.thongnm.controller.aws to javafx.fxml, spring.core;
+    opens dev.thongnm.utils to javafx.fxml, spring.core;
 }

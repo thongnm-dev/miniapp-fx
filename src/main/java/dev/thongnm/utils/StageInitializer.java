@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import dev.thongnm.AppLauncher;
 import dev.thongnm.config.ConfigPath;
-import dev.thongnm.config.StageManager;
 import dev.thongnm.event.StageReadyEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -30,7 +29,7 @@ public class StageInitializer {
     public void onApplicationEvent(StageReadyEvent event) {
         Stage stage = event.getStage();
 
-        Parent view = manager.loadView(configPath.getStartup());
+        Parent view = manager.loadView(configPath.getStartupView());
 
         Scene scene = new Scene(view, configPath.getWidth(), configPath.getHeight());
         stage.setScene(scene);
@@ -39,7 +38,7 @@ public class StageInitializer {
         scene.getStylesheets().add(Objects.requireNonNull(AppLauncher.class.getResource("/css/bootstrap-button.css")).toExternalForm());
 
         scene.getRoot().setStyle("-fx-font-family: 'Segoe UI', 'Arial', sans-serif; -fx-font-size: 14px;");
-        stage.setTitle(configPath.getAppName());
+        stage.setTitle(configPath.getName());
         stage.show();
     }
 }

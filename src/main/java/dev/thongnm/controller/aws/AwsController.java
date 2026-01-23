@@ -1,6 +1,7 @@
 package dev.thongnm.controller.aws;
 
 import dev.thongnm.base.BaseController;
+import dev.thongnm.config.S3Config;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,8 +14,16 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 @Component
-public class AwsController extends BaseController implements Initializable {
+public class AwsController extends BaseController {
 
+    // **************************************************************
+    // Variable
+    // **************************************************************
+    private final S3Config s3Config;
+
+    // **************************************************************
+    //  Controls
+    // **************************************************************
     @FXML
     private StackPane mainArea;
 
@@ -24,8 +33,12 @@ public class AwsController extends BaseController implements Initializable {
     @FXML
     private Button btnRefresh;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public AwsController(S3Config s3Config) {
+        this.s3Config = s3Config;
+    }
+
+    @FXML
+    public void initialize() {
 
         btnRefresh.getStyleClass().addAll(Arrays.asList("btn-transparent", "btn-circle", "btn-outline"));
 
