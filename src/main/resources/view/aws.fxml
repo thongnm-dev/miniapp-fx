@@ -21,9 +21,42 @@
                 </StackPane>
                 <SplitPane fx:id="splitPane" orientation="VERTICAL" styleClass="bg-white" dividerPositions="0.3">
                     <VBox>
-                        <Label text="Editor"
-                               style="-fx-font-weight: bold; -fx-padding: 5;"/>
-                        <TextArea fx:id="codeEditor" VBox.vgrow="ALWAYS"/>
+                        <padding>
+                            <Insets top="10"/>
+                        </padding>
+                        <HBox BorderPane.alignment="CENTER_RIGHT">
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <HBox spacing="10">
+                                <Button fx:id="btnRefresh" style="-fx-padding: 5">
+                                    <graphic>
+                                        <FontIcon iconLiteral="mdi-refresh" iconSize="24"/>
+                                    </graphic>
+                                </Button>
+                                <Button text="Download" style="-fx-padding: 5">
+                                    <graphic>
+                                        <FontIcon iconLiteral="mdi-format-vertical-align-bottom" iconSize="24"/>
+                                    </graphic>
+                                </Button>
+
+                                <Button text="Delete" style="-fx-padding: 5">
+                                    <graphic>
+                                        <FontIcon iconLiteral="mdi-folder-remove" iconSize="24"/>
+                                    </graphic>
+                                </Button>
+
+                                <Button text="Create folder" style="-fx-padding: 5">
+                                    <graphic>
+                                        <FontIcon iconLiteral="mdi-folder-plus" iconSize="24"/>
+                                    </graphic>
+                                </Button>
+
+                                <Button text="Upload" style="-fx-padding: 5">
+                                    <graphic>
+                                        <FontIcon iconLiteral="mdi-format-vertical-align-top" iconSize="24"/>
+                                    </graphic>
+                                </Button>
+                            </HBox>
+                        </HBox>
                     </VBox>
 
                     <VBox>

@@ -1,35 +1,15 @@
 package dev.thongnm.controller;
 
-import java.net.URI;
-import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.ResourceBundle;
-
-import dev.thongnm.utils.StageManager;
-import javafx.scene.Node;
-import javafx.scene.paint.Paint;
-import org.kordamp.ikonli.javafx.FontIcon;
-import org.springframework.stereotype.Component;
-
 import dev.thongnm.service.AppService;
+import dev.thongnm.utils.StageManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -38,9 +18,20 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 import javafx.util.Duration;
+import org.kordamp.ikonli.javafx.FontIcon;
+import org.springframework.stereotype.Controller;
 
-@Component
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+
+@Controller
 public class MainController {
     // **************************************************************
     // Variable

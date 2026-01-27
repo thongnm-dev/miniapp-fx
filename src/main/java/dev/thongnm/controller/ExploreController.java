@@ -1,8 +1,12 @@
 package dev.thongnm.controller;
 
 import dev.thongnm.base.BaseController;
-import org.springframework.stereotype.Component;
+import dev.thongnm.components.LoadingF;
+import org.springframework.stereotype.Controller;
 
-@Component
+@Controller
 public class ExploreController extends BaseController {
+    public ExploreController(LoadingF loading) {
+        super(loading);
+    }
 }

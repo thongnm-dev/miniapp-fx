@@ -8,13 +8,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.kordamp.ikonli.javafx.FontIcon;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-@Component
+@Controller
 public class DayDetailModalController {
 
     @FXML

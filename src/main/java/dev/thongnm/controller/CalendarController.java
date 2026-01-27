@@ -1,9 +1,9 @@
 package dev.thongnm.controller;
 
 import dev.thongnm.base.BaseController;
+import dev.thongnm.components.LoadingF;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,18 +13,16 @@ import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
-import java.net.URL;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
-@Component
+@Controller
 public class CalendarController extends BaseController {
 
     @FXML
@@ -48,8 +46,11 @@ public class CalendarController extends BaseController {
     private LocalDate currentDate;
 
     private static final Locale LOCALE = Locale.of("vi", "VN");
-    private static final DateTimeFormatter MONTH_YEAR_FORMATTER = DateTimeFormatter.ofPattern("'Tháng' M, yyyy",
-            LOCALE);
+    private static final DateTimeFormatter MONTH_YEAR_FORMATTER = DateTimeFormatter.ofPattern("'Tháng' M, yyyy", LOCALE);
+
+    public CalendarController(LoadingF loading) {
+        super(loading);
+    }
 
     @FXML
     public void initialize() {

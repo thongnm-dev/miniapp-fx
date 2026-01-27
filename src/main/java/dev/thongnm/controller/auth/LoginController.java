@@ -1,7 +1,7 @@
 package dev.thongnm.controller.auth;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-@Component
+@Controller
 public class LoginController {
 }

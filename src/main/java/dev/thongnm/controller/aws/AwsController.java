@@ -1,19 +1,17 @@
 package dev.thongnm.controller.aws;
 
 import dev.thongnm.base.BaseController;
+import dev.thongnm.components.LoadingF;
 import dev.thongnm.config.S3Config;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.StackPane;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-import java.net.URL;
 import java.util.Arrays;
-import java.util.ResourceBundle;
 
-@Component
+@Controller
 public class AwsController extends BaseController {
 
     // **************************************************************
@@ -33,7 +31,8 @@ public class AwsController extends BaseController {
     @FXML
     private Button btnRefresh;
 
-    public AwsController(S3Config s3Config) {
+    public AwsController(S3Config s3Config, LoadingF loading) {
+        super(loading);
         this.s3Config = s3Config;
     }
 

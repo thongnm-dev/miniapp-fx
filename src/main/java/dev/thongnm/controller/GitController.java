@@ -1,8 +1,13 @@
 package dev.thongnm.controller;
 
 import dev.thongnm.base.BaseController;
-import org.springframework.stereotype.Component;
+import dev.thongnm.components.LoadingF;
+import org.springframework.stereotype.Controller;
 
-@Component
+@Controller
 public class GitController extends BaseController {
+
+    public GitController(LoadingF loading) {
+        super(loading);
+    }
 }

@@ -20,6 +20,7 @@ module dev.thongnm {
     opens dev.thongnm to javafx.fxml, spring.core;
 
     exports dev.thongnm;
+    exports dev.thongnm.base;
     exports dev.thongnm.components;
     exports dev.thongnm.config;
     exports dev.thongnm.controller;
@@ -29,9 +30,9 @@ module dev.thongnm {
     exports dev.thongnm.service;
     exports dev.thongnm.utils;
 
+    opens dev.thongnm.base to javafx.fxml, spring.core;
     opens dev.thongnm.components to javafx.fxml, spring.core;
     opens dev.thongnm.config to javafx.fxml, spring.core;
-
     opens dev.thongnm.controller to javafx.fxml, spring.core;
     opens dev.thongnm.controller.auth to javafx.fxml, spring.core;
     opens dev.thongnm.controller.aws to javafx.fxml, spring.core;
