@@ -26,7 +26,7 @@ public class DeliveryController extends BaseController implements Initializable 
     private static final Map<BranchType, Map<String, String>> CONFIG_LOCAL = new
             LinkedHashMap<>() {{
                 put(BranchType.BUG, Collections.singletonMap("path",
-                        "D:\\Thongnm\\ESS_DELIVERY\\ess_shin_moela"));
+                        "D:\\Thongnm\\ESS_SHIN_MOELA_ST_DEV"));
                 put(BranchType.CHANGE_REQUEST, Collections.singletonMap("path",
                         "D:\\Thongnm\\ESS_CHANGE_REQUEST\\ess_shin_moela"));
             }};
