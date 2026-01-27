@@ -17,7 +17,6 @@ public class AwsController extends BaseController {
     // **************************************************************
     // Variable
     // **************************************************************
-    private final S3Config s3Config;
 
     // **************************************************************
     //  Controls
@@ -31,9 +30,8 @@ public class AwsController extends BaseController {
     @FXML
     private Button btnRefresh;
 
-    public AwsController(S3Config s3Config, LoadingF loading) {
+    public AwsController(LoadingF loading) {
         super(loading);
-        this.s3Config = s3Config;
     }
 
     @FXML

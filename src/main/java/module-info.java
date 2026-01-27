@@ -16,6 +16,8 @@ module dev.thongnm {
     requires spring.context;
     requires spring.boot;
     requires spring.beans;
+    requires software.amazon.awssdk.services.s3;
+    requires software.amazon.awssdk.regions;
 
     opens dev.thongnm to javafx.fxml, spring.core;
 
@@ -27,6 +29,7 @@ module dev.thongnm {
     exports dev.thongnm.controller.auth;
     exports dev.thongnm.controller.aws;
     exports dev.thongnm.event;
+    exports dev.thongnm.model;
     exports dev.thongnm.service;
     exports dev.thongnm.utils;
 
