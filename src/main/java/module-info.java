@@ -18,6 +18,7 @@ module dev.thongnm {
     requires spring.beans;
     requires software.amazon.awssdk.services.s3;
     requires software.amazon.awssdk.regions;
+    requires software.amazon.awssdk.auth;
 
     opens dev.thongnm to javafx.fxml, spring.core;
 

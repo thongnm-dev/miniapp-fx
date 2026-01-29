@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Button?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.*?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="dev.thongnm.controller.aws.AwsController">
     <center>
         <StackPane fx:id="mainArea">
             <VBox styleClass="card-style" StackPane.alignment="CENTER">
-                <StackPane BorderPane.alignment="CENTER">
-                    <HBox BorderPane.alignment="CENTER_RIGHT">
-
-                    </HBox>
-                </StackPane>
                 <SplitPane fx:id="splitPane" orientation="VERTICAL" styleClass="bg-white" dividerPositions="0.3">
-                    <VBox>
+                    <VBox spacing="10">
                         <padding>
-                            <Insets top="10"/>
+                            <Insets top="3" bottom="3"/>
                         </padding>
+                        <StackPane >
+                           <HBox fx:id="breadcrumbs" style="-fx-padding: 3 0 3 0; -fx-border-color: transparent transparent #999 transparent">
+                                <Hyperlink disable="true">
+                                    <graphic>
+                                        <FontIcon iconLiteral="mdi-home-outline" iconSize="16"/>
+                                    </graphic>
+                                </Hyperlink>
+
+                               <Label text="/" style="-fx-padding: 3;"/>
+
+                               <Hyperlink text="90_share">
+                               </Hyperlink>
+                           </HBox>
+                        </StackPane>
                         <HBox BorderPane.alignment="CENTER_RIGHT">
                             <Region HBox.hgrow="ALWAYS"/>
                             <HBox spacing="10">
@@ -57,45 +62,16 @@
                                 </Button>
                             </HBox>
                         </HBox>
+                        <VBox fx:id="tableContainer">
+
+                        </VBox>
                     </VBox>
 
                     <VBox>
                         <padding>
                             <Insets top="10"/>
                         </padding>
-                        <HBox BorderPane.alignment="CENTER_RIGHT">
-                            <Region HBox.hgrow="ALWAYS"/>
-                            <HBox spacing="10">
-                                <Button fx:id="btnRefresh" style="-fx-padding: 5">
-                                    <graphic>
-                                        <FontIcon iconLiteral="mdi-refresh" iconSize="24"/>
-                                    </graphic>
-                                </Button>
-                                <Button text="Download" style="-fx-padding: 5">
-                                    <graphic>
-                                        <FontIcon iconLiteral="mdi-format-vertical-align-bottom" iconSize="24"/>
-                                    </graphic>
-                                </Button>
 
-                                <Button text="Delete" style="-fx-padding: 5">
-                                    <graphic>
-                                        <FontIcon iconLiteral="mdi-folder-remove" iconSize="24"/>
-                                    </graphic>
-                                </Button>
-
-                                <Button text="Create folder" style="-fx-padding: 5">
-                                    <graphic>
-                                        <FontIcon iconLiteral="mdi-folder-plus" iconSize="24"/>
-                                    </graphic>
-                                </Button>
-
-                                <Button text="Upload" style="-fx-padding: 5">
-                                    <graphic>
-                                        <FontIcon iconLiteral="mdi-format-vertical-align-top" iconSize="24"/>
-                                    </graphic>
-                                </Button>
-                            </HBox>
-                        </HBox>
                         <Separator />
                         <StackPane>
 
