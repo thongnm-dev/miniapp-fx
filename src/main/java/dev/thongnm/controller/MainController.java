@@ -2,7 +2,6 @@ package dev.thongnm.controller;
 
 import dev.thongnm.base.BaseController;
 import dev.thongnm.components.LoadingController;
-import dev.thongnm.model.MainModel;
 import dev.thongnm.service.AppService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -61,13 +60,7 @@ public class MainController implements Initializable {
     @FXML
     private LoadingController loadingController;
 
-    private final MainModel model;
-
     private List<Button> lstmenu = new ArrayList<>();
-
-    public MainController() {
-        model = new MainModel();
-    }
 
     @FXML
     @Override
@@ -210,6 +203,7 @@ public class MainController implements Initializable {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/" + fxmlFileName));
             javafx.scene.Node view = loader.load();
+
 
             Object controller = loader.getController();
             if (controller instanceof BaseController) {

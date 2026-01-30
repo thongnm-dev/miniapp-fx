@@ -19,12 +19,8 @@ module dev.thongnm {
     exports dev.thongnm;
     exports dev.thongnm.components;
     exports dev.thongnm.controller;
-    exports dev.thongnm.controller.auth;
-    exports dev.thongnm.controller.aws;
 
     opens dev.thongnm.components to javafx.fxml;
 
     opens dev.thongnm.controller to javafx.fxml;
-    opens dev.thongnm.controller.auth to javafx.fxml;
-    opens dev.thongnm.controller.aws to javafx.fxml;
 }

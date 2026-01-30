@@ -21,15 +21,6 @@ public class AppService {
         Dashboard.put("closable", false);
         result.add(Dashboard);
 
-        Map<String, Object> calendar = new HashMap<>();
-        calendar.put("id", "calendar.fxml");
-        calendar.put("name", "calendar");
-        calendar.put("icon", "mdi-calendar-today");
-        calendar.put("size", 32);
-        calendar.put("color", "");
-        calendar.put("closable", true);
-        result.add(calendar);
-
         Map<String, Object> delivery = new HashMap<>();
         delivery.put("id", "delivery.fxml");
         delivery.put("name", "delivery");
@@ -38,51 +29,6 @@ public class AppService {
         delivery.put("color", "");
         delivery.put("closable", true);
         result.add(delivery);
-
-        Map<String, Object> aws = new HashMap<>();
-        aws.put("id", "aws.fxml");
-        aws.put("name", "aws");
-        aws.put("icon", "mdi-amazon");
-        aws.put("size", 32);
-        aws.put("color", "");
-        aws.put("closable", true);
-        result.add(aws);
-
-        Map<String, Object> backlog = new HashMap<>();
-        backlog.put("id", "backlog.fxml");
-        backlog.put("name", "backlog");
-        backlog.put("icon", "mdi-beats");
-        backlog.put("size", 32);
-        backlog.put("color", "");
-        backlog.put("closable", true);
-        result.add(backlog);
-
-        Map<String, Object> git = new HashMap<>();
-        git.put("id", "git.fxml");
-        git.put("name", "git");
-        git.put("icon", "mdi-git");
-        git.put("size", 32);
-        git.put("color", "");
-        git.put("closable", true);
-        result.add(git);
-
-        Map<String, Object> folder = new HashMap<>();
-        folder.put("id", "explore.fxml");
-        folder.put("name", "explore");
-        folder.put("icon", "mdi-folder");
-        folder.put("size", 32);
-        folder.put("color", "");
-        folder.put("closable", true);
-        result.add(folder);
-
-        Map<String, Object> setting = new HashMap<>();
-        setting.put("id", "setting.fxml");
-        setting.put("name", "setting");
-        setting.put("icon", "mdi-settings");
-        setting.put("size", 32);
-        setting.put("color", "");
-        setting.put("closable", true);
-        result.add(setting);
 
         return FXCollections.observableList(result);
     }

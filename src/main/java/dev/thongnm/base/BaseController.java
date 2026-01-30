@@ -1,13 +1,16 @@
 package dev.thongnm.base;
 
 import dev.thongnm.components.LoadingController;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
 
 public class BaseController {
 
-    @Getter(AccessLevel.PROTECTED)
-    @Setter
-    private LoadingController loadingController;
+    private LoadingController loadingController = null;
+
+    public void setLoadingController(LoadingController loadingController) {
+        this.loadingController = loadingController;
+    }
+
+    public LoadingController getLoadingController() {
+        return this.loadingController;
+    }
 }
