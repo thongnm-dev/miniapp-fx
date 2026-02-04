@@ -3,13 +3,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.DatePicker?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="dev.thongnm.controller.HomeController">
     <center>
         <StackPane fx:id="mainArea">
             <VBox styleClass="card-style" StackPane.alignment="CENTER">
-
+                <DatePicker  />
             </VBox>
         </StackPane>
     </center>

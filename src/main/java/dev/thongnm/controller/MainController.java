@@ -20,6 +20,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.util.Duration;
+import org.apache.commons.lang3.StringUtils;
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.springframework.stereotype.Controller;
 
@@ -89,7 +90,10 @@ public class MainController {
             FontIcon icon = new FontIcon();
             icon.setIconLiteral((String) res.get("icon"));
             icon.setIconSize((int) res.get("size"));
-            icon.setIconColor(Paint.valueOf("blue"));
+
+            if (StringUtils.isNotBlank((String) res.get("color"))) {
+                icon.setIconColor(Paint.valueOf((String) res.get("color")));
+            }
             Label iconLabel = new Label();
             iconLabel.setGraphic(icon);
 

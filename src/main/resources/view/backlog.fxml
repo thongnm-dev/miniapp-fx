@@ -3,14 +3,29 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="dev.thongnm.controller.BackLogController">
+    <left>
+        <VBox alignment="CENTER"  prefWidth="300" styleClass="card-style" style="-fx-background-radius: 15 0 0 15;">
+            <padding>
+                <Insets left="5" right="5" />
+            </padding>
+            <StackPane>
+                <Label text="aaaa" />
+            </StackPane>
+        </VBox>
+    </left>
     <center>
-        <StackPane fx:id="mainArea">
-            <VBox styleClass="card-style" StackPane.alignment="CENTER">
+        <StackPane>
+            <padding>
+                <Insets left="2" />
+            </padding>
+            <BorderPane styleClass="card-style" style="-fx-background-radius: 0 15 15 0;">
 
-            </VBox>
+            </BorderPane>
         </StackPane>
     </center>
 </BorderPane>

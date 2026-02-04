@@ -18,11 +18,13 @@
                   </VBox>
               </center>
               <bottom>
-                  <VBox alignment="CENTER">
-                      <Separator/>
+                  <VBox alignment="CENTER" >
                       <Button fx:id="toggle" styleClass="btn-transparent" onAction="#collapse">
+                          <padding>
+                              <Insets top="12" bottom="12"/>
+                          </padding>
                           <graphic>
-                              <FontIcon fx:id="chevronIcon" iconLiteral="mdi-chevron-double-left" iconSize="32"/>
+                              <FontIcon fx:id="chevronIcon" iconLiteral="mdi-chevron-double-left" iconSize="20"/>
                           </graphic>
                       </Button>
                   </VBox>
@@ -40,11 +42,14 @@
                    </StackPane>
                </center>
                <bottom>
-                   <HBox styleClass="footer" spacing="10" alignment="CENTER_LEFT" >
-                       <HBox spacing="10">
+                   <HBox styleClass="footer" spacing="4" alignment="CENTER_LEFT" >
+                       <padding>
+                           <Insets right="4" left="1"/>
+                       </padding>
+                       <HBox spacing="2">
                            <Label text="Thongnm - Email: thongnm@allexceed.co.jp">
                                <graphic>
-                                   <FontIcon iconLiteral="mdi-account-star-variant" iconSize="24"/>
+                                   <FontIcon iconLiteral="mdi-account-star-variant" iconSize="14"/>
                                </graphic>
                            </Label>
 
@@ -52,7 +57,7 @@
 
                            <Label fx:id="ipAddress">
                                <graphic>
-                                   <FontIcon iconLiteral="mdi-signal" iconSize="24"/>
+                                   <FontIcon iconLiteral="mdi-signal" iconSize="14"/>
                                </graphic>
                            </Label>
 
@@ -60,7 +65,7 @@
 
                            <Label fx:id="dateLabel">
                                <graphic>
-                                   <FontIcon iconLiteral="mdi-calendar-today" iconSize="24"/>
+                                   <FontIcon iconLiteral="mdi-calendar-today" iconSize="14"/>
                                </graphic>
                            </Label>
 
@@ -68,7 +73,7 @@
 
                            <Label fx:id="clockLabel">
                                <graphic>
-                                   <FontIcon iconLiteral="mdi-timer" iconSize="24"/>
+                                   <FontIcon iconLiteral="mdi-timer" iconSize="14"/>
                                </graphic>
                            </Label>
                        </HBox>
@@ -76,14 +81,11 @@
                        <Region HBox.hgrow="ALWAYS"/>
                        <Label text="Ver 1.0.0" HBox.hgrow="NEVER">
                            <graphic>
-                               <FontIcon iconLiteral="mdi-information-outline" iconSize="24"/>
+                               <FontIcon iconLiteral="mdi-information-outline" iconSize="14"/>
                            </graphic>
                        </Label>
                    </HBox>
                </bottom>
-               <padding>
-                   <Insets right="5" left="1"/>
-               </padding>
            </BorderPane>
        </center>
     </BorderPane>

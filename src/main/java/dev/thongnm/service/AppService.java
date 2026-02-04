@@ -16,7 +16,7 @@ public class AppService {
         Dashboard.put("id", "/view/dashboard.fxml");
         Dashboard.put("name", "dashboard");
         Dashboard.put("icon", "mdi-home-variant");
-        Dashboard.put("size", 32);
+        Dashboard.put("size", 20);
         Dashboard.put("color", "");
         Dashboard.put("closable", false);
         result.add(Dashboard);
@@ -25,7 +25,7 @@ public class AppService {
         calendar.put("id", "/view/calendar.fxml");
         calendar.put("name", "calendar");
         calendar.put("icon", "mdi-calendar-today");
-        calendar.put("size", 32);
+        calendar.put("size", 20);
         calendar.put("color", "");
         calendar.put("closable", true);
         result.add(calendar);
@@ -34,7 +34,7 @@ public class AppService {
         delivery.put("id", "/view/delivery.fxml");
         delivery.put("name", "delivery");
         delivery.put("icon", "mdi-truck-delivery");
-        delivery.put("size", 32);
+        delivery.put("size", 20);
         delivery.put("color", "");
         delivery.put("closable", true);
         result.add(delivery);
@@ -43,7 +43,7 @@ public class AppService {
         aws.put("id", "/view/aws.fxml");
         aws.put("name", "aws");
         aws.put("icon", "mdi-amazon");
-        aws.put("size", 32);
+        aws.put("size", 20);
         aws.put("color", "");
         aws.put("closable", true);
         result.add(aws);
@@ -52,25 +52,16 @@ public class AppService {
         backlog.put("id", "/view/backlog.fxml");
         backlog.put("name", "backlog");
         backlog.put("icon", "mdi-beats");
-        backlog.put("size", 32);
+        backlog.put("size", 20);
         backlog.put("color", "");
         backlog.put("closable", true);
         result.add(backlog);
-
-        Map<String, Object> git = new HashMap<>();
-        git.put("id", "/view/git.fxml");
-        git.put("name", "git");
-        git.put("icon", "mdi-git");
-        git.put("size", 32);
-        git.put("color", "");
-        git.put("closable", true);
-        result.add(git);
 
         Map<String, Object> folder = new HashMap<>();
         folder.put("id", "/view/explore.fxml");
         folder.put("name", "explore");
         folder.put("icon", "mdi-folder");
-        folder.put("size", 32);
+        folder.put("size", 20);
         folder.put("color", "");
         folder.put("closable", true);
         result.add(folder);
@@ -79,7 +70,7 @@ public class AppService {
         setting.put("id", "/view/setting.fxml");
         setting.put("name", "setting");
         setting.put("icon", "mdi-settings");
-        setting.put("size", 32);
+        setting.put("size", 20);
         setting.put("color", "");
         setting.put("closable", true);
         result.add(setting);
